@@ -1,0 +1,14 @@
+name: check
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 5 * * 1"   # weekly: does every lesson still hold on the current runner image?
+permissions:
+  contents: read
+jobs:
+  lessons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: bash run_all.sh
